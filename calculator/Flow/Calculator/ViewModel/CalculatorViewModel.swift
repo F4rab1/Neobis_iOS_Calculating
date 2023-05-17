@@ -12,6 +12,8 @@ protocol CalculatorViewModelType {
     
     func appendNumber(_ number: String)
     func setOperator(_ operatorSymbol: String)
+    func minus()
+    func percent()
     func calculateResult()
     func clear()
 }
@@ -38,13 +40,38 @@ class CalculatorViewModel: CalculatorViewModelType {
         currentOperator = operatorSymbol
     }
     
+    func minus() {
+        guard let number1 = Double(currentNumber) else {
+            return
+        }
+        let negativeNumber = -number1
+        
+        if round(number1) == number1 {
+            currentNumber = String(format: "%.0f", negativeNumber)
+        } else {
+            currentNumber = String(negativeNumber)
+        }
+        
+        delegate?.updateDisplay(with: currentNumber)
+    }
+    
+    func percent() {
+        guard let number1 = Double(currentNumber) else {
+            return
+        }
+        let percentedNumber = number1 / 100
+        
+        currentNumber = String(percentedNumber)
+        delegate?.updateDisplay(with: currentNumber)
+    }
+    
     func calculateResult() {
         guard let number1 = Double(storedNumber),
               let number2 = Double(currentNumber) else {
             return
         }
         
-        var result: Double
+        var result:Double
         
         switch currentOperator {
         case "+":
@@ -54,12 +81,21 @@ class CalculatorViewModel: CalculatorViewModelType {
         case "×":
             result = number1 * number2
         case "÷":
+            if number2 == 0 {
+                delegate?.updateDisplay(with: "Error")
+                return
+            }
             result = number1 / number2
         default:
             return
         }
         
-        currentNumber = String(Int(result))
+        if round(result) == result {
+            currentNumber = String(format: "%.0f", result)
+        } else {
+            currentNumber = String(result)
+        }
+        
         delegate?.updateDisplay(with: currentNumber)
     }
     
@@ -67,6 +103,6 @@ class CalculatorViewModel: CalculatorViewModelType {
         currentNumber = ""
         storedNumber = ""
         currentOperator = ""
-        delegate?.updateDisplay(with: "")
+        delegate?.updateDisplay(with: currentNumber)
     }
 }

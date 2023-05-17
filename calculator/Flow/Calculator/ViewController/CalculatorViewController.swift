@@ -136,7 +136,7 @@ class CalculatorViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 100)
         button.layer.cornerRadius = 40
-        button.setTitle(",", for: .normal)
+        button.setTitle(".", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 35)
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -160,7 +160,6 @@ class CalculatorViewController: UIViewController {
         button.backgroundColor = UIColor(red: 255/255, green: 160/255, blue: 10/255, alpha: 100)
         button.layer.cornerRadius = 40
         button.setTitle("+", for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 7, right: 0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 50)
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -172,7 +171,6 @@ class CalculatorViewController: UIViewController {
         button.backgroundColor = UIColor(red: 255/255, green: 160/255, blue: 10/255, alpha: 100)
         button.layer.cornerRadius = 40
         button.setTitle("-", for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 50)
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -184,7 +182,6 @@ class CalculatorViewController: UIViewController {
         button.backgroundColor = UIColor(red: 255/255, green: 160/255, blue: 10/255, alpha: 100)
         button.layer.cornerRadius = 40
         button.setTitle("×", for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 50)
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -196,7 +193,6 @@ class CalculatorViewController: UIViewController {
         button.backgroundColor = UIColor(red: 255/255, green: 160/255, blue: 10/255, alpha: 100)
         button.layer.cornerRadius = 40
         button.setTitle("÷", for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 7, right: 0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 40)
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -209,7 +205,6 @@ class CalculatorViewController: UIViewController {
         button.layer.cornerRadius = 40
         button.setTitle("%", for: .normal)
         button.setTitleColor(.black, for: .normal)
-//        button.contentEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 35)
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -222,7 +217,6 @@ class CalculatorViewController: UIViewController {
         button.layer.cornerRadius = 40
         button.setTitle("+/-", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 7, right: 0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 35)
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -235,8 +229,8 @@ class CalculatorViewController: UIViewController {
         button.layer.cornerRadius = 40
         button.setTitle("AC", for: .normal)
         button.setTitleColor(.black, for: .normal)
-//        button.contentEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 35)
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -245,7 +239,7 @@ class CalculatorViewController: UIViewController {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
-        stack.spacing = 17
+        stack.spacing = 13
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -254,7 +248,7 @@ class CalculatorViewController: UIViewController {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
-        stack.spacing = 17
+        stack.spacing = 13
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -263,7 +257,7 @@ class CalculatorViewController: UIViewController {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
-        stack.spacing = 17
+        stack.spacing = 13
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -272,7 +266,7 @@ class CalculatorViewController: UIViewController {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
-        stack.spacing = 17
+        stack.spacing = 13
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -355,16 +349,17 @@ class CalculatorViewController: UIViewController {
             
             button0.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
             button0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 17),
-            button0.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -2),
+            button0.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -6.5),
             button0.heightAnchor.constraint(equalToConstant: 80),
             
             buttonDot.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
-            buttonDot.leadingAnchor.constraint(equalTo: button0.trailingAnchor, constant: 16),
+            buttonDot.leadingAnchor.constraint(equalTo: button0.trailingAnchor, constant: 13),
             buttonDot.widthAnchor.constraint(equalToConstant: 80),
             buttonDot.heightAnchor.constraint(equalToConstant: 80),
             
             buttonEqual.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
-            buttonEqual.leadingAnchor.constraint(equalTo: buttonDot.trailingAnchor, constant: 17),
+            buttonEqual.leadingAnchor.constraint(equalTo: buttonDot.trailingAnchor, constant: 13),
+            buttonEqual.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -17),
             buttonEqual.widthAnchor.constraint(equalToConstant: 80),
             buttonEqual.heightAnchor.constraint(equalToConstant: 80),
             
@@ -399,11 +394,9 @@ class CalculatorViewController: UIViewController {
         case "AC":
             viewModel.clear()
         case "+/-":
-            // Implement the logic for plus/minus button
-            break
+            viewModel.minus()
         case "%":
-            // Implement the logic for percent button
-            break
+            viewModel.percent()
         case "÷":
             viewModel.setOperator("÷")
         case "×":
