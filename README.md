@@ -1,1 +1,5 @@
-![image](https://github.com/user-attachments/assets/0cbeab72-214e-43b5-9fa9-bb92c1d8023a)
+# iOS Calculator Clone
+
+This repository contains an iOS Calculator clone built using UIKit programmatically, following the MVVM (Model-View-ViewModel) architecture with ViewModel implemented using a protocol-based approach.
+
+**Tools and Components Used:** UIKit, MVVM (Model-View-ViewModel), Protocols, Auto Layout (NSLayoutConstraint), StackView 
